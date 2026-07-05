@@ -15,6 +15,11 @@ import { createDarkness } from "./darkness.js";
     antialias: true,
   });
 
+  // Pixi's EventSystem sets touch-action: none on the canvas, which blocks
+  // touch scrolling on mobile. The scroll IS the interaction here, so allow
+  // vertical panning again (must be after init — Pixi sets it inline).
+  app.canvas.style.touchAction = "pan-y";
+
   // World scrolls; camera follows the elevator down the shaft.
   const world = new Container();
   app.stage.addChild(world);
