@@ -4,7 +4,7 @@ Fun landing page for https://codemine.be — a scroll-driven "code mining" scene
 
 ## Stack
 
-- Vite + vanilla JS (ES2022, top-level await — see `vite.config.js` build target).
+- Vite + vanilla JS (ES2022 build target — see `vite.config.js`). No top-level await: Vite production builds silently never resolve it (dev works, prod hangs) — use an async IIFE, as in `src/main.js`.
 - PixiJS **v8** for the canvas scene. v8 API only: `await app.init(...)`, shape-then-fill Graphics (`g.rect().fill()`), `blendMode` strings. No v7 patterns (`beginFill`, `app.view`, `lineStyle`).
 - No test framework; verify visually via `npm run dev` and with `npx vite build`.
 
