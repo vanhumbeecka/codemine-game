@@ -23,7 +23,15 @@ import { loadSprites, debugContactSheet } from "./sprites.js";
   // vertical panning again (must be after init — Pixi sets it inline).
   app.canvas.style.touchAction = "pan-y";
 
-  await loadSprites();
+  try {
+    await loadSprites();
+  } catch (err) {
+    // Bad deploy / network hiccup: fall back to the HTML on the page
+    // background instead of leaving a black canvas covering it.
+    console.error("Sprite load failed, disabling canvas scene:", err);
+    app.canvas.remove();
+    return;
+  }
 
   if (new URLSearchParams(location.search).has("sprites")) {
     debugContactSheet(app);

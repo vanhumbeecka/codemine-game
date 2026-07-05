@@ -17,7 +17,7 @@ PixiJS v8 skill files are installed under `.agents/skills/` (symlinked into `.cl
 - `index.html` — real HTML sections (`.depth`) scroll over a `position: fixed` canvas; each section is one viewport tall and anchors a depth in the shaft. HTML has `pointer-events: none` except `.cta` links.
 - `src/main.js` — Pixi `Application` bootstrap, camera: maps `window.scrollY` progress to shaft depth with easing; moves the `world` container.
 - `src/shaft.js` — `SHAFT` world dimensions + procedural shaft (walls, beams, rails, ore veins labeled with languages). Uses a seeded PRNG (`mulberry32`) so the scene is identical every visit — keep all randomness deterministic.
-- `src/elevator.js` — elevator cage + placeholder dwarf, sways with movement speed.
+- `src/elevator.js` — elevator cage + pulley sprites with an idle miner, sways with movement speed.
 - `src/torches.js` — wall torch flames with flicker; exposes light positions.
 - `src/darkness.js` — screen-space black cover; lights are radial-`FillGradient` circles with `blendMode: "erase"`. The container has an `AlphaFilter` so it renders in its own pass and the erase only cuts the darkness, not the scene.
 

@@ -38,7 +38,8 @@ heavy dark/light contrast from torches. Blog CTA links to https://blog.codemine.
 3. [x] **More life**: background dwarves mining at ore veins with pickaxe-swing animation and
    ore-chip particles on hit.
 4. **Content**: real copy per depth section; maybe ore veins clickable → blog tags.
-5. **Polish**: dust particles in light shafts, rope creak/ambient audio (opt-in), mobile check,
+5. **Polish**: dust particles in light shafts, rope creak/ambient audio (opt-in), mobile check
+   (still owed live on a ~390px device — only verified via code inspection so far),
    `prefers-reduced-motion` fallback.
 6. **Deploy**: static build → host at codemine.be (replace redirect to blog).
 
