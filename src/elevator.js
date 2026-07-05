@@ -1,33 +1,37 @@
-import { Container, Graphics } from "pixi.js";
+import { AnimatedSprite, Container, Graphics, Sprite } from "pixi.js";
+import { SCALE, minerAnim, tex } from "./sprites.js";
 import { SHAFT } from "./shaft.js";
 
 export function createElevator(world) {
   const cage = new Container();
   cage.x = SHAFT.width * 0.5;
 
-  const g = new Graphics();
   // Cable up to the surface.
-  g.rect(-1.5, -10000, 3, 10000).fill(0x777777);
-  // Cage frame.
-  g.rect(-45, -70, 90, 78).stroke({ width: 5, color: 0x8a6a3a });
-  g.rect(-45, 4, 90, 10).fill(0x6b4f2a);
-  // Roof.
-  g.moveTo(-50, -70).lineTo(0, -92).lineTo(50, -70).closePath().fill(0x5c4326);
-  cage.addChild(g);
+  const cable = new Graphics();
+  cable.rect(-1.5, -10000, 3, 10000).fill(0x777777);
+  cage.addChild(cable);
 
-  // The dwarf: placeholder blocky miner until real sprites arrive.
-  const dwarf = new Graphics();
-  dwarf.rect(-10, -26, 20, 22).fill(0x4a68a8); // tunic
-  dwarf.circle(0, -32, 8).fill(0xd8a878); // head
-  dwarf.moveTo(-9, -34).lineTo(0, -46).lineTo(9, -34).closePath().fill(0xc23b22); // helmet
-  dwarf.rect(-9, -30, 18, 8).fill(0xd8d8d8); // beard
-  dwarf.rect(-10, -4, 8, 8).fill(0x333333); // boots
-  dwarf.rect(2, -4, 8, 8).fill(0x333333);
-  // Pickaxe over the shoulder.
-  dwarf.rect(10, -40, 3, 26).fill(0x7a5c34);
-  dwarf.moveTo(4, -42).quadraticCurveTo(12, -50, 22, -42).lineTo(20, -38).quadraticCurveTo(12, -44, 6, -38).closePath().fill(0x999999);
-  dwarf.y = 4;
-  cage.addChild(dwarf);
+  // Rope-pulley bracket the cage hangs from.
+  const hanger = new Sprite(tex("elevatorHanger"));
+  hanger.scale.set(SCALE);
+  hanger.anchor.set(0.5, 1);
+  hanger.y = -43 * SCALE * 0.5;
+  cage.addChild(hanger);
+
+  // The cage itself (Kauzz sprite has a lantern + light cone inside).
+  const box = new Sprite(tex("elevatorCage"));
+  box.scale.set(SCALE);
+  box.anchor.set(0.5);
+  cage.addChild(box);
+
+  // Idle miner riding the elevator.
+  const miner = new AnimatedSprite(minerAnim("idle"));
+  miner.scale.set(SCALE);
+  miner.anchor.set(0.5, 1);
+  miner.position.set(-10, 43 * SCALE * 0.5 - 4 * SCALE);
+  miner.animationSpeed = 0.05;
+  miner.play();
+  cage.addChild(miner);
 
   world.addChild(cage);
 
