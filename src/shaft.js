@@ -17,7 +17,7 @@ const ORES = [
 ];
 
 // Deterministic pseudo-random so the shaft looks the same every visit.
-function mulberry32(seed) {
+export function mulberry32(seed) {
   return () => {
     seed |= 0;
     seed = (seed + 0x6d2b79f5) | 0;

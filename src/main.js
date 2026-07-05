@@ -1,9 +1,10 @@
 import { Application, Container } from "pixi.js";
-import { buildShaft, SHAFT } from "./shaft.js";
+import { buildShaft, mulberry32, SHAFT } from "./shaft.js";
 import { createElevator } from "./elevator.js";
 import { createTorches } from "./torches.js";
 import { createDarkness } from "./darkness.js";
 import { createBackground } from "./background.js";
+import { createMiners } from "./miners.js";
 import { loadSprites, debugContactSheet } from "./sprites.js";
 
 // Async IIFE, not top-level await: Vite production builds silently never
@@ -35,7 +36,8 @@ import { loadSprites, debugContactSheet } from "./sprites.js";
   app.stage.addChild(background.container);
   app.stage.addChild(world);
 
-  buildShaft(world, app);
+  const shaft = buildShaft(world, app);
+  const miners = createMiners(world, shaft.veins, mulberry32(4242));
   const torches = createTorches(world, app);
   const elevator = createElevator(world, app);
   const darkness = createDarkness(app, torches, elevator);
@@ -61,6 +63,7 @@ import { loadSprites, debugContactSheet } from "./sprites.js";
 
     elevator.update(currentDepth, targetDepth, ticker);
     torches.update(ticker);
+    miners.update(ticker);
     darkness.update(ticker);
   });
 })();
