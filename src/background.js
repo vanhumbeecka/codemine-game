@@ -30,6 +30,9 @@ export function createBackground(app) {
       }
     },
     resize() {
+      if (sprites[0].width === app.screen.width && sprites[0].height === app.screen.height) {
+        return;
+      }
       for (const s of sprites) {
         s.width = app.screen.width;
         s.height = app.screen.height;
