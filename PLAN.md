@@ -32,9 +32,11 @@ heavy dark/light contrast from torches. Blog CTA links to https://blog.codemine.
    normalized (0–1) in the default `"local"` textureSpace, and `erase` blends on source alpha, so
    the falloff must be in the alpha stops (see comment in `src/darkness.js`). Enlarged light radii
    (torch 160, elevator 260).
-2. **Real art**: sprite atlas (Kenney/itch.io cave tileset as placeholder), replace procedural
-   Graphics per module (shaft → elevator → dwarf → torches). AnimatedSprite for dwarf/flames.
-3. **More life**: background dwarves mining at ore veins (pickaxe animation, particles on hit).
+2. [x] **Real art**: sprite atlas — shaft, elevator, dwarf, and wall lanterns now render from
+   sprite sheets (Kauzz "Pixel Valley | Cave" + Daniel Kole Productions "16Bit Miner Animated
+   Character", credited in README.md), defined in `src/sprites.js`.
+3. [x] **More life**: background dwarves mining at ore veins with pickaxe-swing animation and
+   ore-chip particles on hit.
 4. **Content**: real copy per depth section; maybe ore veins clickable → blog tags.
 5. **Polish**: dust particles in light shafts, rope creak/ambient audio (opt-in), mobile check,
    `prefers-reduced-motion` fallback.

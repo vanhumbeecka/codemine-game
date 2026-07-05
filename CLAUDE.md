@@ -23,11 +23,11 @@ PixiJS v8 skill files are installed under `.agents/skills/` (symlinked into `.cl
 
 ## Status
 
-Scaffold complete and visually verified in Chrome: scroll drives the elevator, torches flicker, darkness/light holes work, blog CTA clickable, `vite build` passes. Everything on screen is still placeholder procedural `Graphics`. Roadmap and next steps (real sprite art, mining dwarves, copy, polish, deploy) live in `PLAN.md` — keep it in sync when completing milestones.
+Scaffold complete and visually verified in Chrome: scroll drives the elevator, torches flicker, darkness/light holes work, blog CTA clickable, `vite build` passes. Shaft, elevator, wall lanterns, parallax background, and background miners now render from real sprite art (Kauzz + DK Productions packs, credited in README.md); frames are defined in `src/sprites.js`, which also exposes a `?sprites` query-param contact-sheet debug view. Roadmap and next steps (copy, polish, deploy) live in `PLAN.md` — keep it in sync when completing milestones.
 
 ## Conventions
 
-- All world graphics are placeholder procedural `Graphics` for now; the plan is to replace them with sprite atlases later — keep drawing code isolated per module so swaps are cheap.
+- World sprite frames are defined centrally in `src/sprites.js`; keep drawing code isolated per module (shaft, elevator, torches, background, miners) so future art swaps stay cheap. Visit `?sprites` in dev to see a contact sheet of all loaded frames.
 - Landing-page constraints rule: fast first paint, native scroll, no scroll hijacking.
 
 ## Commands
