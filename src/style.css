@@ -70,3 +70,17 @@ main {
   background: #e8a33d;
   color: #0a0805;
 }
+
+/* Subtle variant for the source-code link */
+.cta.source {
+  border: none;
+  padding: 0;
+  font-size: 0.85rem;
+  color: #b8a074;
+  text-decoration: underline;
+}
+
+.cta.source:hover {
+  background: none;
+  color: #e8a33d;
+}
