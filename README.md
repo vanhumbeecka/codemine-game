@@ -10,7 +10,16 @@ The blog lives at [blog.codemine.be](https://blog.codemine.be) and is linked fro
 - [PixiJS v8](https://pixijs.com) for the canvas scene
 - No frameworks, no scroll hijacking — real HTML sections scroll over a fixed canvas, and the canvas camera follows scroll progress
 
-All world graphics are procedural placeholder `Graphics` for now; sprite atlas art comes later. The shaft layout uses a seeded PRNG, so the scene is identical on every visit.
+The shaft layout uses a seeded PRNG, so the scene is identical on every visit.
+
+## Art credits
+
+- Cave tileset & backgrounds: [Pixel Valley | Cave](https://kauzz.itch.io/kpc) by **Kauzz**
+- Miner character: [16Bit Miner Animated Character](https://dkproductions.itch.io/16bit-miner-animated-character) by **Daniel Kole Productions**
+
+The raw packs are not part of this repository (`data/` is gitignored); only the
+sprite sheets used by the page are committed under `public/assets/`. Support the
+artists via the links above.
 
 ## Development
 

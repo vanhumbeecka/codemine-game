@@ -84,3 +84,12 @@ main {
   background: none;
   color: #e8a33d;
 }
+
+.credits {
+  font-size: 0.8rem;
+  opacity: 0.6;
+}
+.credits a {
+  color: inherit;
+  pointer-events: auto;
+}
