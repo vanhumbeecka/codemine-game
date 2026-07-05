@@ -3,6 +3,7 @@ import { buildShaft, SHAFT } from "./shaft.js";
 import { createElevator } from "./elevator.js";
 import { createTorches } from "./torches.js";
 import { createDarkness } from "./darkness.js";
+import { loadSprites, debugContactSheet } from "./sprites.js";
 
 // Async IIFE, not top-level await: Vite production builds silently never
 // resolve a top-level `await app.init()` (works in dev only).
@@ -19,6 +20,13 @@ import { createDarkness } from "./darkness.js";
   // touch scrolling on mobile. The scroll IS the interaction here, so allow
   // vertical panning again (must be after init — Pixi sets it inline).
   app.canvas.style.touchAction = "pan-y";
+
+  await loadSprites();
+
+  if (new URLSearchParams(location.search).has("sprites")) {
+    debugContactSheet(app);
+    return;
+  }
 
   // World scrolls; camera follows the elevator down the shaft.
   const world = new Container();
