@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>codemine.be — mining code since forever</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <canvas id="mine"></canvas>
+
+    <!-- Scrollable content; each section anchors to a depth in the shaft -->
+    <main>
+      <section class="depth" id="surface">
+        <h1>codemine.be</h1>
+        <p>Scroll down to descend into the mine.</p>
+      </section>
+      <section class="depth" id="blog">
+        <h2>The Blog Vein</h2>
+        <p>Rich deposits of writing found here.</p>
+        <a class="cta" href="https://blog.codemine.be">Enter the blog →</a>
+      </section>
+      <section class="depth" id="about">
+        <h2>About the Miner</h2>
+        <p>Andries — digging for C#, TypeScript and Python since forever.</p>
+        <a class="cta" href="https://andries.codemine.be">Read the miner's log (CV) →</a>
+      </section>
+      <section class="depth" id="bottom">
+        <h2>Rock bottom</h2>
+        <p>Nothing down here but bedrock. Yet.</p>
+      </section>
+    </main>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

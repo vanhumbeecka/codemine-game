@@ -1,0 +1,72 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  background: #0a0805;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: ui-monospace, "Cascadia Code", "Fira Code", monospace;
+  color: #e8d5a3;
+}
+
+#mine {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  display: block;
+  z-index: 0;
+}
+
+main {
+  position: relative;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.depth {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem 8vw;
+  max-width: 34rem;
+}
+
+.depth h1 {
+  font-size: 3rem;
+  text-shadow: 0 0 24px rgba(255, 160, 40, 0.6);
+}
+
+.depth h2 {
+  font-size: 2rem;
+  text-shadow: 0 0 16px rgba(255, 160, 40, 0.5);
+}
+
+.depth p {
+  margin-top: 1rem;
+  color: #b8a074;
+  line-height: 1.5;
+}
+
+.cta {
+  pointer-events: auto;
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid #e8a33d;
+  color: #e8a33d;
+  text-decoration: none;
+  width: fit-content;
+  transition: background 0.2s, color 0.2s;
+}
+
+.cta:hover {
+  background: #e8a33d;
+  color: #0a0805;
+}
