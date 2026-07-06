@@ -23,11 +23,11 @@ PixiJS v8 skill files are installed under `.agents/skills/` (symlinked into `.cl
 
 ## Status
 
-Scaffold complete and visually verified in Chrome: scroll drives the elevator, torches flicker, darkness/light holes work, blog CTA clickable, `vite build` passes. Shaft walls and wall lanterns render from real sprite art (Kauzz "Pixel Valley | Cave" pack, credited in README.md); frames are defined in `src/sprites.js`, which also exposes a `?sprites` query-param contact-sheet debug view. Elevator sprites, background miners, and parallax background were tried and reverted (looked ugly) — elevator is procedural again. Roadmap and next steps (copy, polish, deploy) live in `PLAN.md` — keep it in sync when completing milestones.
+Scaffold complete and visually verified in Chrome: scroll drives the elevator, torches flicker, darkness/light holes work, blog CTA clickable, `vite build` passes. Shaft walls, wall lanterns, and the parallax cave background render from real sprite art (Kauzz "Pixel Valley | Cave" pack, credited in README.md); frames are defined in `src/sprites.js`, which also exposes a `?sprites` query-param contact-sheet debug view. Elevator sprites, background miners, and ore crystal sprites were tried and reverted (looked ugly) — elevator and ore veins are procedural again. Roadmap and next steps (copy, polish, deploy) live in `PLAN.md` — keep it in sync when completing milestones.
 
 ## Conventions
 
-- World sprite frames are defined centrally in `src/sprites.js`; keep drawing code isolated per module (shaft, elevator, torches) so future art swaps stay cheap. Visit `?sprites` in dev to see a contact sheet of all loaded frames.
+- World sprite frames are defined centrally in `src/sprites.js`; keep drawing code isolated per module (shaft, elevator, torches, background) so future art swaps stay cheap. Visit `?sprites` in dev to see a contact sheet of all loaded frames.
 - Landing-page constraints rule: fast first paint, native scroll, no scroll hijacking.
 
 ## Commands

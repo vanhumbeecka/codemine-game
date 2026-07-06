@@ -3,6 +3,7 @@ import { buildShaft, SHAFT } from "./shaft.js";
 import { createElevator } from "./elevator.js";
 import { createTorches } from "./torches.js";
 import { createDarkness } from "./darkness.js";
+import { createBackground } from "./background.js";
 import { loadSprites, debugContactSheet } from "./sprites.js";
 
 // Async IIFE, not top-level await: Vite production builds silently never
@@ -38,6 +39,8 @@ import { loadSprites, debugContactSheet } from "./sprites.js";
 
   // World scrolls; camera follows the elevator down the shaft.
   const world = new Container();
+  const background = createBackground(app);
+  app.stage.addChild(background.container);
   app.stage.addChild(world);
 
   buildShaft(world, app);
@@ -57,6 +60,8 @@ import { loadSprites, debugContactSheet } from "./sprites.js";
     const targetDepth = scrollProgress() * SHAFT.depth;
     // Ease toward target so the elevator feels like it has weight.
     currentDepth += (targetDepth - currentDepth) * Math.min(1, ticker.deltaTime * 0.08);
+    background.update(currentDepth);
+    background.resize();
 
     const centerY = app.screen.height * 0.5;
     world.y = centerY - currentDepth;

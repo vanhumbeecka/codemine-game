@@ -9,18 +9,6 @@ const ENV_FRAMES = {
   fillPurple: [32, 352, 32, 32],
   fillStone: [64, 352, 32, 32],
   fillDirtLight: [0, 384, 64, 32],
-  crystalPinkBig: [340, 15, 47, 49],
-  crystalBlueBig: [469, 15, 47, 49],
-  crystalGoldBig: [596, 15, 47, 49],
-  crystalPinkMed: [373, 68, 37, 36],
-  crystalBlueMed: [502, 68, 37, 36],
-  crystalGoldMed: [629, 68, 37, 36],
-  crystalPinkSmall: [338, 74, 28, 28],
-  crystalBlueSmall: [467, 74, 28, 28],
-  crystalGoldSmall: [594, 74, 28, 28],
-  gemsRed: [674, 130, 30, 13],
-  gemsSilver: [674, 146, 30, 13],
-  gemsGreen: [674, 162, 30, 13],
   lantern: [180, 337, 7, 13],
   beamPlank: [80, 233, 47, 7],
   pillarWood: [405, 346, 10, 59],
@@ -31,11 +19,23 @@ const ENV_FRAMES = {
 };
 
 let envSheet;
+const bgSheets = {};
 const cache = new Map();
 
 export async function loadSprites() {
-  envSheet = await Assets.load("./assets/enviroment.png");
-  envSheet.source.scaleMode = "nearest";
+  [envSheet, bgSheets.a, bgSheets.b, bgSheets.c] = await Promise.all([
+    Assets.load("./assets/enviroment.png"),
+    Assets.load("./assets/bg-a.png"),
+    Assets.load("./assets/bg-b.png"),
+    Assets.load("./assets/bg-c.png"),
+  ]);
+  for (const t of [envSheet, bgSheets.a, bgSheets.b, bgSheets.c]) {
+    t.source.scaleMode = "nearest";
+  }
+}
+
+export function bgTexture(layer) {
+  return bgSheets[layer];
 }
 
 export function tex(name) {

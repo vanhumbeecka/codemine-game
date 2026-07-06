@@ -9,11 +9,11 @@ export const SHAFT = {
 };
 
 const ORES = [
-  { label: "C#", color: 0x9b4f96, crystal: "crystalPinkMed", tint: 0xffffff },
-  { label: "TS", color: 0x3178c6, crystal: "crystalBlueMed", tint: 0xffffff },
-  { label: "PY", color: 0xffd43b, crystal: "crystalGoldMed", tint: 0xffffff },
-  { label: "RS", color: 0xdea584, crystal: "crystalGoldMed", tint: 0xffa066 },
-  { label: "GO", color: 0x00add8, crystal: "crystalBlueMed", tint: 0x66ffe0 },
+  { label: "C#", color: 0x9b4f96 },
+  { label: "TS", color: 0x3178c6 },
+  { label: "PY", color: 0xffd43b },
+  { label: "RS", color: 0xdea584 },
+  { label: "GO", color: 0x00add8 },
 ];
 
 // Deterministic pseudo-random so the shaft looks the same every visit.
@@ -84,13 +84,12 @@ export function buildShaft(world, app) {
   rails.rect(SHAFT.width * 0.5 + 56, spanY, 4, spanH).fill(0x3a3a3a);
   world.addChild(rails);
 
-  // Ore veins: crystals embedded near the walls, labeled with languages.
+  // Ore veins embedded in the walls, labeled with languages.
   const oreStyle = new TextStyle({
     fontFamily: "monospace",
     fontSize: 13,
     fontWeight: "bold",
-    fill: 0xf0e6d2,
-    stroke: { color: 0x0a0805, width: 3 },
+    fill: 0x0a0805,
   });
 
   const veins = [];
@@ -99,16 +98,17 @@ export function buildShaft(world, app) {
     const onLeft = rand() < 0.5;
     const x = onLeft ? 10 + rand() * 30 : SHAFT.width - 40 - rand() * 30;
 
-    const crystal = new Sprite(tex(ore.crystal));
-    crystal.scale.set(onLeft ? SCALE : -SCALE, SCALE);
-    crystal.anchor.set(0.5);
-    crystal.tint = ore.tint;
-    crystal.position.set(x, y);
-    world.addChild(crystal);
+    const vein = new Graphics();
+    for (let i = 0; i < 4; i++) {
+      vein
+        .circle(x + (rand() - 0.5) * 26, y + (rand() - 0.5) * 26, 6 + rand() * 8)
+        .fill(ore.color);
+    }
+    world.addChild(vein);
 
     const label = new Text({ text: ore.label, style: oreStyle });
     label.anchor.set(0.5);
-    label.position.set(x, y + 8);
+    label.position.set(x, y);
     world.addChild(label);
 
     veins.push({ x, y, onLeft, ore });

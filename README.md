@@ -14,10 +14,10 @@ The shaft layout uses a seeded PRNG, so the scene is identical on every visit.
 
 ## Art credits
 
-- Cave tileset: [Pixel Valley | Cave](https://kauzz.itch.io/kpc) by **Kauzz**
+- Cave tileset & backgrounds: [Pixel Valley | Cave](https://kauzz.itch.io/kpc) by **Kauzz**
 
 The raw pack is not part of this repository (`data/` is gitignored); only the
-sprite sheet used by the page is committed under `public/assets/`. Support the
+sprite sheets used by the page are committed under `public/assets/`. Support the
 artist via the link above.
 
 ## Development
