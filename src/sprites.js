@@ -1,4 +1,4 @@
-import { AnimatedSprite, Assets, Container, Rectangle, Sprite, Text, Texture } from "pixi.js";
+import { Assets, Container, Rectangle, Sprite, Text, Texture } from "pixi.js";
 
 // World pixels per art pixel (16px art tile -> 48 world px).
 export const SCALE = 3;
@@ -28,36 +28,14 @@ const ENV_FRAMES = {
   pillarMetal: [452, 346, 10, 59],
   pillarMetalPair: [470, 346, 20, 59],
   minecart: [560, 386, 48, 18],
-  elevatorHanger: [656, 311, 64, 41],
-  elevatorCage: [656, 361, 64, 43],
 };
 
-// miner.png is a strict 16x16 grid: one animation per row.
-const MINER_ROWS = {
-  miningRight: [0, 6],
-  idle: [1, 4],
-  miningDown: [2, 6],
-  climb: [3, 6],
-  walk: [4, 12],
-  hurt: [5, 4],
-  death: [6, 5],
-};
-
-let envSheet, minerSheet;
-const bgSheets = {};
+let envSheet;
 const cache = new Map();
 
 export async function loadSprites() {
-  [envSheet, minerSheet, bgSheets.a, bgSheets.b, bgSheets.c] = await Promise.all([
-    Assets.load("./assets/enviroment.png"),
-    Assets.load("./assets/miner.png"),
-    Assets.load("./assets/bg-a.png"),
-    Assets.load("./assets/bg-b.png"),
-    Assets.load("./assets/bg-c.png"),
-  ]);
-  for (const t of [envSheet, minerSheet, bgSheets.a, bgSheets.b, bgSheets.c]) {
-    t.source.scaleMode = "nearest";
-  }
+  envSheet = await Assets.load("./assets/enviroment.png");
+  envSheet.source.scaleMode = "nearest";
 }
 
 export function tex(name) {
@@ -71,39 +49,12 @@ export function tex(name) {
   return cache.get(name);
 }
 
-export function minerAnim(name) {
-  const key = `miner:${name}`;
-  if (!cache.has(key)) {
-    const [row, count] = MINER_ROWS[name];
-    cache.set(
-      key,
-      Array.from(
-        { length: count },
-        (_, i) =>
-          new Texture({
-            source: minerSheet.source,
-            frame: new Rectangle(i * 16, row * 16, 16, 16),
-          }),
-      ),
-    );
-  }
-  return cache.get(key);
-}
-
-export function bgTexture(layer) {
-  return bgSheets[layer];
-}
-
 export function envFrameNames() {
   return Object.keys(ENV_FRAMES);
 }
 
-export function minerAnimNames() {
-  return Object.keys(MINER_ROWS);
-}
-
-// Renders every named frame + animation with labels; open /?sprites to check
-// frame rects against the sheets.
+// Renders every named frame with labels; open /?sprites to check
+// frame rects against the sheet.
 export function debugContactSheet(app) {
   const root = new Container();
   app.stage.addChild(root);
@@ -129,12 +80,5 @@ export function debugContactSheet(app) {
     const s = new Sprite(tex(name));
     s.scale.set(SCALE);
     place(s, name);
-  }
-  for (const name of minerAnimNames()) {
-    const a = new AnimatedSprite(minerAnim(name));
-    a.scale.set(SCALE);
-    a.animationSpeed = 0.15;
-    a.play();
-    place(a, name);
   }
 }

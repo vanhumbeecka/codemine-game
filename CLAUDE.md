@@ -17,17 +17,17 @@ PixiJS v8 skill files are installed under `.agents/skills/` (symlinked into `.cl
 - `index.html` — real HTML sections (`.depth`) scroll over a `position: fixed` canvas; each section is one viewport tall and anchors a depth in the shaft. HTML has `pointer-events: none` except `.cta` links.
 - `src/main.js` — Pixi `Application` bootstrap, camera: maps `window.scrollY` progress to shaft depth with easing; moves the `world` container.
 - `src/shaft.js` — `SHAFT` world dimensions + procedural shaft (walls, beams, rails, ore veins labeled with languages). Uses a seeded PRNG (`mulberry32`) so the scene is identical every visit — keep all randomness deterministic.
-- `src/elevator.js` — elevator cage + pulley sprites with an idle miner, sways with movement speed.
+- `src/elevator.js` — procedural elevator cage + placeholder dwarf, sways with movement speed.
 - `src/torches.js` — wall torch flames with flicker; exposes light positions.
 - `src/darkness.js` — screen-space black cover; lights are radial-`FillGradient` circles with `blendMode: "erase"`. The container has an `AlphaFilter` so it renders in its own pass and the erase only cuts the darkness, not the scene.
 
 ## Status
 
-Scaffold complete and visually verified in Chrome: scroll drives the elevator, torches flicker, darkness/light holes work, blog CTA clickable, `vite build` passes. Shaft, elevator, wall lanterns, parallax background, and background miners now render from real sprite art (Kauzz + DK Productions packs, credited in README.md); frames are defined in `src/sprites.js`, which also exposes a `?sprites` query-param contact-sheet debug view. Roadmap and next steps (copy, polish, deploy) live in `PLAN.md` — keep it in sync when completing milestones.
+Scaffold complete and visually verified in Chrome: scroll drives the elevator, torches flicker, darkness/light holes work, blog CTA clickable, `vite build` passes. Shaft walls and wall lanterns render from real sprite art (Kauzz "Pixel Valley | Cave" pack, credited in README.md); frames are defined in `src/sprites.js`, which also exposes a `?sprites` query-param contact-sheet debug view. Elevator sprites, background miners, and parallax background were tried and reverted (looked ugly) — elevator is procedural again. Roadmap and next steps (copy, polish, deploy) live in `PLAN.md` — keep it in sync when completing milestones.
 
 ## Conventions
 
-- World sprite frames are defined centrally in `src/sprites.js`; keep drawing code isolated per module (shaft, elevator, torches, background, miners) so future art swaps stay cheap. Visit `?sprites` in dev to see a contact sheet of all loaded frames.
+- World sprite frames are defined centrally in `src/sprites.js`; keep drawing code isolated per module (shaft, elevator, torches) so future art swaps stay cheap. Visit `?sprites` in dev to see a contact sheet of all loaded frames.
 - Landing-page constraints rule: fast first paint, native scroll, no scroll hijacking.
 
 ## Commands
