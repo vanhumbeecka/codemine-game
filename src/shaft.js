@@ -59,23 +59,17 @@ export function buildShaft(world, app) {
     }
   }
 
-  // Wooden support frames every ~500px of depth: two side pillars + plank across.
+  // Wooden double-beam supports every ~500px of depth, spanning the shaft
+  // with their ends embedded in the walls.
   for (let y = 250; y < SHAFT.depth; y += 500) {
-    const plank = new TilingSprite({
-      texture: tex("beamPlank"),
+    const beam = new TilingSprite({
+      texture: tex("beamDouble"),
       width: SHAFT.width + 20,
-      height: 7 * SCALE,
+      height: 12 * SCALE,
     });
-    plank.tileScale.set(SCALE);
-    plank.position.set(-10, y);
-    world.addChild(plank);
-
-    for (const px of [2, SHAFT.width - 2 - 20 * SCALE]) {
-      const pillar = new Sprite(tex("pillarWoodPair"));
-      pillar.scale.set(SCALE);
-      pillar.position.set(px, y - 59 * SCALE + 7 * SCALE);
-      world.addChild(pillar);
-    }
+    beam.tileScale.set(SCALE);
+    beam.position.set(-10, y);
+    world.addChild(beam);
   }
 
   // Elevator guide rails.

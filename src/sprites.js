@@ -11,6 +11,7 @@ const ENV_FRAMES = {
   fillDirtLight: [0, 384, 64, 32],
   lantern: [180, 337, 7, 13],
   beamPlank: [80, 233, 47, 7],
+  beamDouble: [96, 161, 47, 12],
   pillarWood: [405, 346, 10, 59],
   pillarWoodPair: [423, 346, 20, 59],
   pillarMetal: [452, 346, 10, 59],

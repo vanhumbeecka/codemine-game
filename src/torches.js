@@ -7,8 +7,9 @@ import { SHAFT } from "./shaft.js";
 export function createTorches(world) {
   const torches = [];
 
-  for (let y = 350; y < SHAFT.depth; y += 500) {
-    const onLeft = (y / 500) % 2 === 0;
+  let index = 0;
+  for (let y = 350; y < SHAFT.depth; y += 500, index++) {
+    const onLeft = index % 2 === 0;
     const x = onLeft ? 26 : SHAFT.width - 26;
 
     const lantern = new Sprite(tex("lantern"));
