@@ -1,33 +1,38 @@
 # codemine-game
 
-The landing page for [codemine.be](https://codemine.be) — a scroll-driven "code mining" scene. Dwarves mine languages (C#, TS, PY, …) in a dark shaft lit by torches, and scrolling the page drives the mine elevator down. Art direction: Spelunky 2-ish, but darker, with heavy torch light/shadow contrast.
+The landing page for [codemine.be](https://codemine.be): scroll into a pixel-art underground workshop.
 
-The blog lives at [blog.codemine.be](https://blog.codemine.be) and is linked from the page.
+Five stops connect the surface, Andries’s workshop, the blog archive, the [3D Tetris arcade](https://3dtetris.codemine.be/), and a hidden garden. Direct links are always available in the header.
 
 ## Stack
 
-- [Vite](https://vite.dev) + vanilla JS (ES2022)
-- [PixiJS v8](https://pixijs.com) for the canvas scene
-- No frameworks, no scroll hijacking — real HTML sections scroll over a fixed canvas, and the canvas camera follows scroll progress
+- Vite + vanilla JavaScript
+- PixiJS v8 for the pixel mine, miner’s lift, and drifting sparks
+- Native HTML scrolling and navigation, with keyboard access, reduced motion, and a pause control
+- Local fonts and a static illustration fallback when JavaScript or WebGL is unavailable
 
-The shaft layout uses a seeded PRNG, so the scene is identical on every visit.
-
-## Art credits
-
-- Cave tileset & backgrounds: [Pixel Valley | Cave](https://kauzz.itch.io/kpc) by **Kauzz**
-
-The raw pack is not part of this repository (`data/` is gitignored); only the
-sprite sheets used by the page are committed under `public/assets/`. Support the
-artist via the link above.
+The camera and hotspots use the same responsive coordinates in `src/journey.js`. The active scene is `src/workshop.js`; `src/main.js` connects it to the page.
 
 ## Development
 
 ```sh
 npm install
-npm run dev      # dev server
-npm run build    # production build to dist/
+npm run dev
+npm test
+npm run test:e2e
+npm run build
 ```
+
+Browser tests use installed Google Chrome, build the production site, and serve it on port 4173. They exercise descent, navigation, the arcade, mobile layout, reduced motion, and the no-JavaScript fallback. Screenshots are written to `test-results/`.
+
+## Art and fonts
+
+The mine and lift are editable pixel SVGs, rendered at whole-number scale with nearest-neighbour sampling. See [art direction](docs/art-direction.md).
+
+Pixelify Sans is served locally under the SIL Open Font License. Its license is included in `public/assets/`.
+
+The retained cave tileset and backgrounds are [Pixel Valley | Cave](https://kauzz.itch.io/kpc) by **Kauzz**. They are not used by the workshop scene. The raw pack is not committed (`data/` is gitignored).
 
 ## Deployment
 
-Pushes to `main` build and deploy to GitHub Pages via [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml).
+Pushes to `main` build and deploy to GitHub Pages via `.github/workflows/deploy.yml`. Vite uses a relative base for both the custom domain and repository subpaths.

@@ -3,39 +3,233 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>codemine.be — mining code since forever</title>
-    <link rel="icon" href="favicon.ico" />
+    <meta name="theme-color" content="#161925" />
+    <meta
+      name="description"
+      content="A little workshop beneath the surface. Descend into Codemine to meet Andries, explore the blog, and play 3D Tetris."
+    />
+    <title>Codemine — good things lie beneath</title>
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="preload" as="image" href="./assets/pixel-mine.svg" />
     <link rel="stylesheet" href="/src/style.css" />
   </head>
   <body>
-    <canvas id="mine"></canvas>
+    <a class="skip-link" href="#about">Skip to the content</a>
+    <div class="scene-fallback" aria-hidden="true"></div>
+    <canvas id="mine" aria-hidden="true"></canvas>
+    <div class="scene-shade" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <a class="wordmark" href="#surface" aria-label="Codemine, surface">
+        <svg
+          viewBox="0 0 16 16"
+          aria-hidden="true"
+          shape-rendering="crispEdges"
+        >
+          <path d="M3 13h2v-2h2V9h2V7h2V5H9v2H7v2H5v2H3z" fill="#99704b" />
+          <path d="M3 3h8v2h2v2h2v3h-2V8h-2V6H9V5H3z" fill="#f0ca7e" />
+        </svg>
+        codemine<span class="domain">.be</span>
+      </a>
+      <nav aria-label="Quick links">
+        <a href="https://andries.codemine.be"
+          >About me <span aria-hidden="true">↗</span></a
+        >
+        <a href="https://blog.codemine.be"
+          >Blog <span aria-hidden="true">↗</span></a
+        >
+        <a class="nav-game" href="https://3dtetris.codemine.be/"
+          >Play a game <span aria-hidden="true">↗</span></a
+        >
+      </nav>
+    </header>
 
     <!-- Scrollable content; each section anchors to a depth in the shaft -->
     <main>
-      <section class="depth" id="surface">
-        <h1>codemine.be</h1>
-        <p>Scroll down to descend into the mine.</p>
+      <section
+        class="depth surface"
+        id="surface"
+        aria-labelledby="surface-title"
+      >
+        <div class="section-copy">
+          <p class="eyebrow">
+            <span class="status-dot"></span> A small corner of the internet
+          </p>
+          <h1 id="surface-title">Good things<br />lie <em>beneath.</em></h1>
+          <p class="intro">
+            A little code. A little curiosity.<br />A whole world below the
+            surface.
+          </p>
+          <a class="cta" href="#about"
+            >Step inside <span aria-hidden="true">↓</span></a
+          >
+          <p class="footnote">No hard hat required. Curiosity recommended.</p>
+        </div>
+        <div class="surface-note" aria-hidden="true">
+          <span>↓</span> There’s more down here.
+        </div>
       </section>
-      <section class="depth" id="blog">
-        <h2>The Blog Vein</h2>
-        <p>Rich deposits of writing found here.</p>
-        <a class="cta" href="https://blog.codemine.be">Enter the blog →</a>
+
+      <section class="depth" id="about" aria-labelledby="about-title">
+        <div class="section-copy">
+          <p class="eyebrow">
+            01 / The workshop <span class="level-depth">−040 m</span>
+          </p>
+          <h2 id="about-title">Made with<br /><em>curiosity.</em></h2>
+          <p class="intro">
+            I’m Andries. Software engineer, tinkerer,<br
+              class="desktop-break"
+            />
+            and the person keeping the lights on down here.
+          </p>
+          <p class="description">
+            This is my little workshop on the web. A place to build things,
+            follow interesting ideas, and occasionally see what happens when I
+            press that button.
+          </p>
+          <a class="cta" href="https://andries.codemine.be"
+            >Meet the miner <span aria-hidden="true">↗</span></a
+          >
+          <div class="specimen-labels">
+            <span>C#</span><span>TypeScript</span><span>Python</span
+            ><span>And a good coffee</span>
+          </div>
+        </div>
       </section>
-      <section class="depth" id="about">
-        <h2>About the Miner</h2>
-        <p>Andries — digging for C#, TypeScript and Python since forever.</p>
-        <a class="cta" href="https://andries.codemine.be">Read the miner's log (CV) →</a>
+
+      <section class="depth" id="blog" aria-labelledby="blog-title">
+        <div class="section-copy">
+          <p class="eyebrow">
+            02 / The archive <span class="level-depth">−120 m</span>
+          </p>
+          <h2 id="blog-title">Notes from<br /><em>underground.</em></h2>
+          <p class="intro">
+            Ideas worth keeping.<br />Lessons learned the interesting way.
+          </p>
+          <p class="description">
+            Pull up a chair. The blog is where I collect thoughts on software,
+            things I’ve figured out, and things I’m still digging into.
+          </p>
+          <a class="cta" href="https://blog.codemine.be"
+            >Read the blog <span aria-hidden="true">↗</span></a
+          >
+          <p class="footnote">Best enjoyed with something warm.</p>
+        </div>
       </section>
-      <section class="depth" id="bottom">
-        <h2>Rock bottom</h2>
-        <p>Nothing down here but bedrock. Yet.</p>
-        <a class="cta source" href="https://github.com/vanhumbeecka/codemine-game">Dig through the source →</a>
-        <p class="credits">
-          Art: <a href="https://kauzz.itch.io/kpc">Kauzz</a> ·
-          <a href="https://dkproductions.itch.io/16bit-miner-animated-character">Daniel Kole Productions</a>
-        </p>
+
+      <section class="depth" id="arcade" aria-labelledby="arcade-title">
+        <div class="section-copy">
+          <p class="eyebrow">
+            03 / The arcade <span class="level-depth">−260 m</span>
+          </p>
+          <h2 id="arcade-title">A little<br /><em>block break.</em></h2>
+          <p class="intro">Even miners need a little play.</p>
+          <p class="description">
+            Familiar falling blocks. One extra dimension. Take 3D Tetris for a
+            spin and see how deep into “one more game” you get.
+          </p>
+          <a class="cta" href="https://3dtetris.codemine.be/"
+            >Play 3D Tetris <span aria-hidden="true">↗</span></a
+          >
+          <p class="footnote">
+            <span class="tiny-blocks" aria-hidden="true">▟</span> No coins. Just
+            questionable spatial decisions.
+          </p>
+        </div>
+      </section>
+
+      <section class="depth" id="garden" aria-labelledby="garden-title">
+        <div class="section-copy">
+          <p class="eyebrow">
+            04 / The hidden garden <span class="level-depth">−500 m</span>
+          </p>
+          <h2 id="garden-title">You found<br /><em>the quiet bit.</em></h2>
+          <p class="intro">Turns out there’s more down here than code.</p>
+          <p class="description">
+            Thanks for wandering through my corner of the internet. Stay a
+            moment. The way back up is a little quicker.
+          </p>
+          <a class="cta" href="#surface"
+            >Back to the surface <span aria-hidden="true">↑</span></a
+          >
+          <a
+            class="source-link"
+            href="https://github.com/vanhumbeecka/codemine-game"
+            >Curious how it works? Dig through the source
+            <span aria-hidden="true">↗</span></a
+          >
+          <p class="colophon">
+            Built with code. Powered by curiosity.<br />Somewhere in Belgium.
+          </p>
+        </div>
       </section>
     </main>
+
+    <nav class="level-nav" aria-label="Mine levels">
+      <a href="#surface" aria-label="00 The surface" aria-current="step"
+        ><span class="level-name">The surface</span
+        ><span class="level-dot"></span><span class="level-number">00</span></a
+      >
+      <a href="#about" aria-label="01 The workshop"
+        ><span class="level-name">The workshop</span
+        ><span class="level-dot"></span><span class="level-number">01</span></a
+      >
+      <a href="#blog" aria-label="02 The archive"
+        ><span class="level-name">The archive</span
+        ><span class="level-dot"></span><span class="level-number">02</span></a
+      >
+      <a href="#arcade" aria-label="03 The arcade"
+        ><span class="level-name">The arcade</span
+        ><span class="level-dot"></span><span class="level-number">03</span></a
+      >
+      <a href="#garden" aria-label="04 The garden"
+        ><span class="level-name">The garden</span
+        ><span class="level-dot"></span><span class="level-number">04</span></a
+      >
+    </nav>
+
+    <button
+      class="art-hotspot canary"
+      id="canary"
+      type="button"
+      aria-label="Say hello to the canary"
+      hidden
+    >
+      <span aria-hidden="true">+</span>
+    </button>
+    <a
+      class="art-hotspot arcade-hotspot"
+      id="arcade-cabinet"
+      href="https://3dtetris.codemine.be/"
+      aria-label="Play at the arcade cabinet"
+      hidden
+      ><span aria-hidden="true">↗</span></a
+    >
+    <p class="canary-message" role="status"></p>
+
+    <footer class="journey-hud">
+      <div class="depth-meter">
+        <span class="meter-icon" aria-hidden="true">↧</span
+        ><span
+          >DEPTH <strong>−<span id="depth-value">000</span></strong> m</span
+        ><span class="depth-rule" aria-hidden="true"></span
+        ><span id="level-label">At the surface</span>
+      </div>
+      <p class="scroll-hint">
+        Scroll to explore <span aria-hidden="true">↓</span>
+      </p>
+      <button
+        class="motion-toggle"
+        type="button"
+        aria-label="Pause ambience"
+        aria-pressed="false"
+        hidden
+      >
+        <svg viewBox="0 0 20 20" aria-hidden="true">
+          <path d="M7 5v10M13 5v10" /></svg
+        ><span>Pause ambience</span>
+      </button>
+    </footer>
 
     <script type="module" src="/src/main.js"></script>
   </body>
