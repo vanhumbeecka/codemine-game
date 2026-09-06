@@ -172,3 +172,15 @@ test("a browser without WebGL retains the illustrated landing page and links", a
     await browser.close();
   }
 });
+
+test("llms.txt is published at the site root for language models", async ({
+  request,
+}) => {
+  const response = await request.get("/llms.txt");
+  expect(response.status()).toBe(200);
+  const body = await response.text();
+  expect(body).toMatch(/^# Codemine\n/);
+  expect(body).toContain("https://blog.codemine.be");
+  expect(body).toContain("https://andries.codemine.be");
+  expect(body).toContain("https://3dtetris.codemine.be/");
+});

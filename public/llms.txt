@@ -1,0 +1,15 @@
+# Codemine
+
+> codemine.be is the personal corner of the internet of Andries, a software engineer and tinkerer in Belgium. The site itself is a single scroll-driven pixel-art landing page; the writing, the CV, and the game it points to each live on their own subdomain.
+
+The landing page is a mine you descend by scrolling, with five stops: the surface, the workshop (who Andries is), the archive (the blog), the arcade (a 3D Tetris game), and a hidden garden at the bottom. It holds no articles of its own — everything substantive is behind the links below.
+
+## Destinations
+
+- [Blog](https://blog.codemine.be): Writing on software — things figured out, and things still being dug into. The main source of long-form content.
+- [About Andries](https://andries.codemine.be): CV and professional background of the person behind the site.
+- [3D Tetris](https://3dtetris.codemine.be/): A playable browser game — familiar falling blocks with one extra dimension.
+
+## Optional
+
+- [Landing page source](https://github.com/vanhumbeecka/codemine-game): The Vite and PixiJS source for codemine.be itself, including the pixel-art mine scene.
